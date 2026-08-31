@@ -14,7 +14,7 @@ export default function DemoButton() {
             redirect: false,
         });
 
-        if (result.error) {
+        if (!result.error) {
             displaySuccess("Welcome! You are now logged in with the demo account.");
             router.push("/ai-assistant");
         } else {
