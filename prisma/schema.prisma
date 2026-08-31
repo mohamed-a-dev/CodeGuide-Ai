@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/**
+ * Entities: [
+ * user
+ * document
+ * documentChunk
+ * chat
+ * message
+ * category
+ * ]
+ */
+
+enum Role {
+  admin
+  developer
+}
+
+enum DocumentStatus {
+  processing
+  indexed
+  failed
+}
+
+enum MessageRole {
+  user
+  assistant
+}
+
+model User {
+  id        String     @id @default(uuid())
+  documents Document[] @relation("adminDocs")
+  chats     Chat[]     @relation("userChats")
+  email     String     @unique
+  password  String
+  name      String
+  role      Role       @default(developer)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Document {
+  id         String          @id @default(uuid())
+  adminId    String
+  admin      User            @relation("adminDocs", fields: [adminId], references: [id], onDelete: Cascade)
+  chunks     DocumentChunk[] @relation("docChunks")
+  categoryId String
+  category   Category        @relation("docCategory", fields: [categoryId], references: [id], onDelete: Cascade)
+  filename   String
+  status     DocumentStatus  @default(processing)
+  createdAt  DateTime        @default(now())
+}
+
+model DocumentChunk {
+  id         String                       @id @default(uuid())
+  documentId String
+  document   Document                     @relation("docChunks", fields: [documentId], references: [id], onDelete: Cascade)
+  content    String
+  embedding  Unsupported("vector(1024)")?
+  pageNumber Int
+  chunkIndex Int
+  createdAt  DateTime                     @default(now())
+}
+
+model Category {
+  id        String     @id @default(uuid())
+  documents Document[] @relation("docCategory")
+  name      String     @unique
+  createdAt DateTime   @default(now())
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation("userChats", fields: [userId], references: [id], onDelete: Cascade)
+  messages  Message[] @relation("chatMessages")
+  title     String    @default("New Chat")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        String      @id @default(uuid())
+  chatId    String
+  chat      Chat        @relation("chatMessages", fields: [chatId], references: [id], onDelete: Cascade)
+  content   String
+  role      MessageRole
+  citations Json?
+  createdAt DateTime    @default(now())
+}
