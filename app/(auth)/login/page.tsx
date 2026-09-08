@@ -1,5 +1,6 @@
 "use client"
 
+import TryDemoBtn from "@/components/Auth/TryDemoBtn"
 import { displayError, displaySuccess } from "@/lib/toast"
 import { loginSchema } from "@/lib/validation.zod"
 import { Bot } from "lucide-react"
@@ -156,19 +157,7 @@ export default function Login() {
                     </p>
                 </div>
 
-                {/* Demo */}
-                <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4 text-center">
-                    <p className="text-xs text-slate-500">
-                        Want to explore the project?
-                    </p>
-
-                    <Link
-                        href="/login?demo=doctor"
-                        className="mt-1 inline-block text-sm font-medium text-slate-900 hover:underline"
-                    >
-                        Try Demo Account →
-                    </Link>
-                </div>
+                <TryDemoBtn />
             </section>
         </div>
     )
