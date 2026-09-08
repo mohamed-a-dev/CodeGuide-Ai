@@ -1,5 +1,5 @@
 'use client'
-import useDemoLogin from '@/app/hooks/useDemoLogin'
+import useDemoLogin from '@/hooks/useDemoLogin'
 
 export default function TryDemoBtn() {
     const { handleDemo } = useDemoLogin();
