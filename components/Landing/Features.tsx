@@ -50,7 +50,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="container mx-auto bg-slate-50/70 px-6 py-20 lg:px-8 lg:py-24"
+      className="container mx-auto bg-slate-50/70 px-6 py-24 lg:px-8"
     >
       <div className="mx-auto max-w-6xl">
         {/* Header */}
