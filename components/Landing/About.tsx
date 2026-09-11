@@ -25,7 +25,7 @@ export default function About() {
       id="about"
       className="min-h-[calc(100vh-64px)] bg-slate-50/70"
     >
-      <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-7xl flex-col justify-center px-6 py-16 lg:px-8">
+      <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-7xl flex-col justify-center px-6 py-24 lg:px-8">
         {/* Header */}
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-600">
