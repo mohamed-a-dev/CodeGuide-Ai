@@ -136,7 +136,7 @@ export default function HowItWorks() {
 
                 {/* Desktop Arrow */}
                 {index !== steps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 lg:block">
+                  <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 lg:block!">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-300 shadow-sm">
                       <ArrowRight size={14} />
                     </div>
