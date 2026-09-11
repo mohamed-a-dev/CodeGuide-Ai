@@ -104,7 +104,7 @@ export default function ChatPreview() {
   {/* Static Input */}
   <div className="border-t border-slate-100 bg-slate-50/50 p-4 sm:p-5">
 
-    <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="flex items-center gap-2 rounded-2xl border border-slate-200 p-1 bg-white shadow-sm">
 
       <div className="flex min-h-10 flex-1 items-center px-3 py-2 text-sm text-slate-400">
         Can you explain useEffect?
