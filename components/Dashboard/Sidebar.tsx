@@ -22,7 +22,7 @@ export default function Sidebar() {
     const getSidebarState = showSidebar ? 'translate-x-0 w-full' : '-translate-x-full md:translate-x-0';
     const session = useSession();
 
-    const doctorLinks = [
+    const developerLinks = [
         {
             label: "Dashboard",
             path: "/dashboard",
@@ -123,7 +123,7 @@ export default function Sidebar() {
 
 
                 {
-                    doctorLinks.map((link) => {
+                    developerLinks.map((link) => {
 
                         const Icon = link.icon;
 
