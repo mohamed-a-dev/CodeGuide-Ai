@@ -117,7 +117,7 @@ export default function Sidebar() {
 
 
 
-            {/* Doctor Menu */}
+            {/* Dev Menu */}
 
             <nav className="space-y-2 flex-1">
 
