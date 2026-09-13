@@ -108,7 +108,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
               CodeGuide AI will answer using your selected documentation.
             </p>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-2">
+            <div className="mt-6 flex grid grid-cols-1 sm:grid-cols-2 justify-center gap-2">
               {[
                 "How does Next.js App Router work?",
                 "Explain React Server Components",
