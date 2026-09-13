@@ -94,7 +94,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
       >
         {/* Empty State */}
         {messages.length === 0 && (
-          <div className="flex h-full min-h-125 flex-col items-center justify-center px-6 text-center">
+          <div className="flex h-full min-h-125 flex-col items-center justify-center text-center">
             <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
               <Bot size={30} />
             </div>
