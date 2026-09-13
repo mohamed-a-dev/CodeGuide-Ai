@@ -11,7 +11,7 @@ export default async function Page() {
   const formattedChats = formatChats(chats);
 
   return (
-    <main className="min-h-screen bg-slate-50/70">
+    <main className="bg-slate-50/70">
       <div>
         {/* Header */}
         <section className="mb-8">
