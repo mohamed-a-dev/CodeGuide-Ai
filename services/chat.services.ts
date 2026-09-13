@@ -17,6 +17,9 @@ export const getUserChats = async (userId: string) => {
     const chats = await prisma.chat.findMany({
         where: {
             userId
+        },
+        orderBy: {
+            createdAt: "desc"
         }
     });
     return chats;
