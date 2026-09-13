@@ -124,11 +124,7 @@ export default async function Page() {
                   )}
 
                   <span
-                    className={
-                      stat.trend
-                        ? "text-slate-400"
-                        : "text-slate-400"
-                    }
+                    className={"text-slate-400"}
                   >
                     {stat.trend ? "this month" : stat.description}
                   </span>
