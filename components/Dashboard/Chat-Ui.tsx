@@ -94,7 +94,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
       >
         {/* Empty State */}
         {messages.length === 0 && (
-          <div className="flex h-full min-h-125 flex-col items-center justify-center text-center">
+          <div className="flex h-full flex-col items-center justify-center  text-center">
             <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
               <Bot size={30} />
             </div>
@@ -108,7 +108,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
               CodeGuide AI will answer using your selected documentation.
             </p>
 
-            <div className="mt-6 flex grid grid-cols-1 sm:grid-cols-2 justify-center gap-2">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
               {[
                 "How does Next.js App Router work?",
                 "Explain React Server Components",
@@ -154,13 +154,6 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
               className={`flex gap-3 ${isUser ? "justify-end" : "justify-start"
                 }`}
             >
-              {/* AI Avatar */}
-              {
-              !isUser && (
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
-                  <Bot size={16} />
-                </div>
-              )}
 
               <div
                 className={`max-w-[80%] ${isUser ? "items-end" : "items-start"
@@ -171,15 +164,11 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
                   className={`mb-1.5 flex items-center gap-1.5 ${isUser ? "justify-end" : "justify-start"
                     }`}
                 >
+
+                  {/* user */}
                   {isUser && (
                     <span className="text-xs font-medium text-slate-500">
                       You
-                    </span>
-                  )}
-
-                  {!isUser && (
-                    <span className="text-xs font-semibold text-slate-700">
-                      CodeGuide AI
                     </span>
                   )}
 
@@ -187,6 +176,21 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
                     <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-slate-100 text-slate-500">
                       <User size={13} />
                     </div>
+                  )}
+
+                  {/* Ai */}
+                  {
+                    !isUser && (
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
+                        <Bot size={16} />
+                      </div>
+                    )}
+
+
+                  {!isUser && (
+                    <span className="text-xs font-semibold text-slate-700">
+                      CodeGuide AI
+                    </span>
                   )}
                 </div>
 
