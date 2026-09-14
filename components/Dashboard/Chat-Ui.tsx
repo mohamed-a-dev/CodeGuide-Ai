@@ -83,7 +83,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
       <div
         className="
               scrollbar-thin
-              scrollbar-thumb-slate-300
+              scrollbar-thumb-slate-950
               flex-1
               space-y-7
               overflow-y-auto
