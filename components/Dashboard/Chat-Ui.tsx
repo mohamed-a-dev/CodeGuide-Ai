@@ -238,7 +238,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
                                       
                                     "
                               >
-                                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 capitalize">
                                   <FileText size={14} />
                                 </div>
 
