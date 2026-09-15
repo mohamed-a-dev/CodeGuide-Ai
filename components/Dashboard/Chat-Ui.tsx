@@ -270,7 +270,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
 
          {/* Loading */}
         {loading && (
-          <div className="gap-3 w-fit">
+          <div className="w-fit">
             <div
               className={`mb-1.5 flex items-center gap-1.5 `}
             >
