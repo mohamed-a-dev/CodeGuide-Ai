@@ -268,29 +268,38 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
           );
         })}
 
-        {/* Loading */}
+         {/* Loading */}
         {loading && (
-          <div className="flex gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
-              <Bot size={16} />
+          <div className="gap-3 w-fit">
+            <div
+              className={`mb-1.5 flex items-center gap-1.5 `}
+            >
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white">
+                <Bot size={16} />
+              </div>
+              <span className="text-xs font-semibold text-slate-700">
+                CodeGuide AI
+              </span>
             </div>
 
-            <div>
-              <div className="mb-1.5 text-xs font-semibold text-slate-700">
-                CodeGuide AI
-              </div>
-
-              <div className="rounded-2xl rounded-tl-md bg-slate-50 px-4 py-3">
-                <div className="flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" />
-                </div>
+            <div
+              className={`
+                        rounded-2xl
+                        px-4
+                        py-3
+                        w-fit
+                        mx-auto
+                        bg-slate-200
+                      `}
+            >            
+              <div className="flex items-center gap-1">
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
+                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" />
               </div>
             </div>
           </div>
         )}
-      </div>
 
       {/* ================= Input ================= */}
       <div className="border-t border-slate-100 bg-slate-50/50 p-4 sm:p-5">
