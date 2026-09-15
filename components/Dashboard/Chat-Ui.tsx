@@ -282,21 +282,21 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
               </span>
             </div>
 
-            <div
-              className={`
-                        rounded-2xl
-                        px-4
-                        py-3
-                        w-fit
-                        mx-auto
-                        bg-slate-200
-                      `}
-            >            
-              <div className="flex items-center gap-1">
+       
+            <div className="
+                 flex
+                 items-center
+                 gap-1
+                 rounded-2xl
+                 px-4
+                 py-3
+                 w-fit
+                 mx-auto
+                 bg-slate-200"
+            >
                 <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
                 <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
                 <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" />
-              </div>
             </div>
           </div>
         )}
