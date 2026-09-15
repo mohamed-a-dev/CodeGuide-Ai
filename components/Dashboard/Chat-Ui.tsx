@@ -300,6 +300,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
             </div>
           </div>
         )}
+      </div>
 
       {/* ================= Input ================= */}
       <div className="border-t border-slate-100 bg-slate-50/50 p-4 sm:p-5">
