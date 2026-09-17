@@ -131,7 +131,7 @@ export default async function Page() {
                           Status
                         </th>
 
-                        <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
                           Action
                         </th>
                       </tr>
@@ -187,7 +187,7 @@ export default async function Page() {
                             </td>
 
                             {/* Action */}
-                            <td className="px-6 py-4 text-right">
+                            <td className="px-6 py-4">
                               <DeleteButton documentId={document.id} />
                             </td>
                           </tr>
