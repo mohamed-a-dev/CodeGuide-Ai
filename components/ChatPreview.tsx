@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ChatPreview() {
   return (
-<section className="flex flex-col md:h-145 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+<section className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
 
   {/* Messages */}
   <div className="flex-1 space-y-7 overflow-hidden px-5 py-6 sm:px-8">
