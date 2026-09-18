@@ -95,7 +95,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/login"
-              className="
+              className="block
             rounded-xl bg-blue-500 px-5 py-2
             font-semibold transition
             hover:bg-blue-600
