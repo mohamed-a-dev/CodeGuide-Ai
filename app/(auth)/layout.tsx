@@ -11,7 +11,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <div className="h-screen grid md:grid-cols-2 gap-1">
       {children}
-       <section className="w-full md:flex items-center justify-center bg-slate-50 p-6 px-4 py-10 ">
+       <section className="w-full md:flex items-center justify-center bg-slate-50 px-6 px-4  ">
 
         <main>
           <div className="mb-5 flex justify-center md:justify-start">
