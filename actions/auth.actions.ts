@@ -4,7 +4,7 @@ import { getDefaultErrorResponse } from "@/errors/default-error-response";
 import { prismaErrorHandler } from "@/errors/prisma.errors";
 import { Prisma } from "@/generated/prisma/client";
 import { registerSchema } from "@/lib/validation.zod";
-import { createUser } from "@/services/auth.servcies";
+import { createUser } from "@/services/auth.services";
 import { AuthState } from "@/types/auth.types";
 
 export const signUp = async (prev: AuthState, formData: FormData) => {
