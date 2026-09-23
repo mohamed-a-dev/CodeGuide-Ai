@@ -6,7 +6,7 @@ export type ActionState = {
 };
 
 export type Document = {
-    adminId?: string;
+    adminId: string;
     categoryId: string;
     filename: string;
     status?: DocumentStatus; // from prisma generated folder
