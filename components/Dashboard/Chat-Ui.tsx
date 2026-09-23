@@ -13,7 +13,13 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-export default function ChatUi({ cateId = null, initialMessages = [], oldChatId = null }: { cateId?: string | null, initialMessages?: ChatMessage[], oldChatId?: string | null }) {
+type ChatUiProps = {
+  cateId?: string | null,
+  initialMessages?: ChatMessage[],
+  oldChatId?: string | null
+}
+
+export default function ChatUi({ cateId = null, initialMessages = [], oldChatId = null }: ChatUiProps) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [chatId, setChatId] = useState(oldChatId);
@@ -268,7 +274,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
           );
         })}
 
-         {/* Loading */}
+        {/* Loading */}
         {loading && (
           <div className="w-fit">
             <div
@@ -282,7 +288,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
               </span>
             </div>
 
-       
+
             <div className="
                  flex
                  items-center
@@ -294,9 +300,9 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
                  mx-auto
                  bg-slate-200"
             >
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" />
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
+              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-slate-400" />
             </div>
           </div>
         )}
