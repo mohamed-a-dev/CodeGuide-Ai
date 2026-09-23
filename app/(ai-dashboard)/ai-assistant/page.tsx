@@ -1,21 +1,9 @@
-'use client'
-import ChatUi from "@/components/Dashboard/Chat-Ui";
+import ChatWorkspaceWrapper from "@/components/Dashboard/ChatWorkspaceWrapper";
 import { getDocuments } from "@/services/document.services";
-import { BookOpen, Bot, ChevronDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Bot } from "lucide-react";
 
-export default function Page() {
-  const [documents, setDocuments] = useState<{ categoryId: string; filename: string }[]>([]);
-  const [cateId, setCateId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchDocuments = async () => {
-      const documents = await getDocuments();
-      setDocuments(documents);
-    }
-
-    fetchDocuments();
-  }, [])
+export default async function Page() {
+  const documents = await getDocuments();
 
   return (
     <div className="space-y-5 bg-slate-50/70">
@@ -41,65 +29,8 @@ export default function Page() {
         </p>
       </div>
 
-      {/*  Knowledge Base  */}
-      <div className="mb-4 flex items-center justify-between flex-col gap-2 sm:gap-0 sm:flex-row">
-        <div>
-          <p className="text-sm font-semibold text-slate-800">
-            Knowledge Base
-          </p>
-
-          <p className="mt-0.5 text-xs text-slate-400">
-            Choose which documentation the AI should use
-          </p>
-        </div>
-
-        <div className="relative">
-          <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
-            <BookOpen size={15} className="text-slate-400" />
-
-            <select
-              value={cateId ?? ""}
-              onChange={(e) =>
-                setCateId(
-                  e.target.value === "" ? null : e.target.value
-                )
-              }
-              className="
-                capitalize
-                    w-48
-                    cursor-pointer
-                    appearance-none
-                    bg-transparent
-                    pr-5
-                    text-xs
-                    font-medium
-                    text-slate-700
-                    outline-none
-                "
-            >
-              <option value="">All Documentation</option>
-
-              {documents.map((document) => (
-                <option
-                className="capitalize"
-                  key={document.categoryId}
-                  value={document.categoryId}
-                >
-                  {document.filename}
-                </option>
-              ))}
-            </select>
-
-            <ChevronDown
-              size={14}
-              className="pointer-events-none absolute right-2.5 text-slate-400"
-            />
-          </div>
-        </div>
-      </div>
-
-
-      <ChatUi cateId={cateId} />
+      {/* wrapper */}
+      <ChatWorkspaceWrapper documents={documents} />
     </div>
   );
 }
