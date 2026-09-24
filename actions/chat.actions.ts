@@ -75,7 +75,7 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
 
     // default answer in case of not question
     let geminiResponse: GeminiResponse = {
-        answer: 'Please ask me a question!',
+        answer: 'Please ask me a programming question related to the provided documents!',
         sources: [],
     };
 
