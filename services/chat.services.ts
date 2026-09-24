@@ -2,6 +2,20 @@
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma"
 
+export const isChatOwner = async (chatId: string, userId: string) => {
+    const chat = await prisma.chat.findFirst({
+        where: {
+            id: chatId,
+            userId,
+        },
+        select: {
+            id: true,
+        },
+    });
+
+    return !!chat;
+};
+
 export const createChat = async (userId: string, title: string) => {
     const chat = await prisma.chat.create({
         data: {

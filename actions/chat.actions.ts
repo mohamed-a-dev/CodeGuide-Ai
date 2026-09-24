@@ -1,16 +1,23 @@
 'use server'
 
 import { auth } from "@/auth";
-import { AuthErrorHandler } from "@/errors/auth.errors";
 import { MessageRole } from "@/generated/prisma/enums";
 import { generateEmbedding } from "@/lib/jina";
 import { ChatMessageSchema } from "@/lib/validation.zod";
-import { createChat, getUserChats } from "@/services/chat.services";
+import { createChat, getUserChats, isChatOwner } from "@/services/chat.services";
 import { searchSimilarChunks } from "@/services/chunk.services";
 import { generateChatResponse, generateChatTitle, shouldRetrieve } from "@/services/llm.services";
 import { createMessage, getChatMessages } from "@/services/message.services";
 import { ChatMessage } from "@/types/chat.types";
 import { redirect } from "next/navigation";
+
+type GeminiResponse = {
+    answer: string,
+    sources: {
+        fileName: string;
+        pageNumbers: number[];
+    }[]
+};
 
 export const generateChatResponseAction = async (message: ChatMessage, categoryId: string | null) => {
     // Authentication
@@ -30,6 +37,17 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
 
     // user info
     const { id: userId } = session.user;
+
+    // Authorization
+    if (result.data.chatId) {
+        const isOwner = await isChatOwner(result.data.chatId, userId);
+        if (!isOwner)
+            return {
+                message: 'You are not authorized to use this chat',
+                success: false,
+                data: null
+            };
+    }
 
     // create chat if chatId = null
     let chatID = result.data.chatId;
@@ -55,6 +73,12 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
 
     let messagesToLLM = allMessages.map((message) => ({ role: message.role, content: message.content }));
 
+    // default answer in case of not question
+    let geminiResponse: GeminiResponse = {
+        answer: 'Please ask me a question!',
+        sources: [],
+    };
+
     if (needsRetrieval) {
         // send message to jina to be embedded 
         const data = await generateEmbedding([result.data.content]);
@@ -72,10 +96,12 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
             }
             return { role: msg.role, content: msg.content };
         });
+
+
+        // send to llm
+        geminiResponse = await generateChatResponse(messagesToLLM);
     }
 
-    // send to llm
-    const geminiResponse = await generateChatResponse(messagesToLLM);
 
     // store gemini message response into DB
     const geminiMessage = await createMessage({
@@ -105,6 +131,6 @@ export const getUserChatsAction = async () => {
     const { id: userId } = session.user;
 
     const chats = await getUserChats(userId);
-    
+
     return chats;
 }
