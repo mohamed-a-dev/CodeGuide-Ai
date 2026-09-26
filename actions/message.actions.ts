@@ -10,12 +10,14 @@ export const getChatMessagesAction = async (chatId: string) => {
     if (!session)
         redirect('/login');
 
+    const { id: userId } = session.user;
+
     // input validation
     const result = chatIdSchema.safeParse({ chatId });
     if (!result.success)
         return { success: false, message: result.error.issues.map(err => err.message).join(", "), data: null };
 
-    const messages = await getChatMessages(chatId);
+    const messages = await getChatMessages(chatId, userId);
     return {
         success: true,
         message: '',
