@@ -9,10 +9,7 @@ export const createMessage = async (message: Message) => {
     });
 }
 
-export const getChatMessages = async (chatId: string) => {
-    const session = await auth();
-    const userId = session?.user.id;
-
+export const getChatMessages = async (chatId: string, userId:string) => {
     return await prisma.message.findMany({
         where: {
             chatId,

@@ -66,7 +66,7 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
     await createMessage(newMessage);
 
     // get all chat messages
-    const allMessages = await getChatMessages(chatID);
+    const allMessages = await getChatMessages(chatID, userId);
 
     // Decide whether the user message requires retrieval from the embedded chunks.
     const needsRetrieval = await shouldRetrieve(result.data.content);

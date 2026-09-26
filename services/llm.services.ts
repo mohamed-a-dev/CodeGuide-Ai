@@ -252,12 +252,7 @@ Return ONLY true or false.
   const result = await generateText({
     model: google("gemini-3.5-flash-lite"),
     system: ROUTER_PROMPT,
-    messages: [
-      {
-        role: "user",
-        content: `User-Message: ${message}`,
-      },
-    ],
+    prompt: message
   });
 
   return result.text.trim() === "true";
