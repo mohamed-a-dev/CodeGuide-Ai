@@ -1,6 +1,7 @@
 'use server'
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma"
+import { redirect } from "next/navigation";
 
 export const isChatOwner = async (chatId: string, userId: string) => {
     const chat = await prisma.chat.findFirst({
@@ -27,7 +28,14 @@ export const createChat = async (userId: string, title: string) => {
     return chat;
 }
 
-export const getUserChats = async (userId: string) => {
+export const getUserChats = async () => {
+    // authentication
+    const session = await auth();
+    if (!session)
+        redirect('/login');
+
+    const userId = session.user.id;
+
     const chats = await prisma.chat.findMany({
         where: {
             userId

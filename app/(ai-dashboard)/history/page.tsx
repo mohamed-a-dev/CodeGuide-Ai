@@ -1,11 +1,11 @@
-import { getUserChatsAction } from "@/actions/chat.actions";
 import { formatChats } from "@/lib/chat";
 import Wrapper from "@/components/History/Wrapper";
 import { MessageSquare } from "lucide-react";
+import { getUserChats } from "@/services/chat.services";
 
 
 export default async function Page() {
-  const chats = await getUserChatsAction();
+  const chats = await getUserChats();
 
   // format chats 
   const formattedChats = formatChats(chats);

@@ -7,12 +7,12 @@ import {
   MessagesSquare,
   TrendingUp,
 } from "lucide-react";
-import { getUserChatsAction } from "@/actions/chat.actions";
 import { formatTimeAgo } from "@/lib/date";
 import { getDashboardStats } from "@/services/dashboard.services";
+import { getUserChats } from "@/services/chat.services";
 
 export default async function Page() {
-  const chats = await getUserChatsAction();
+  const chats = await getUserChats();
   const dashboardStats  = await getDashboardStats();
 
   const formattedChats = chats.map((chat) => ({ ...chat, time: formatTimeAgo(chat.createdAt), icon: MessagesSquare })).slice(0, 4);

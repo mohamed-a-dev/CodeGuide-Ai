@@ -134,16 +134,3 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
         return getDefaultErrorResponse('chat.actions.ts/generateChatResponseAction()')
     }
 }
-
-export const getUserChatsAction = async () => {
-    // authentication
-    const session = await auth();
-    if (!session)
-        redirect('/login');
-
-    const { id: userId } = session.user;
-
-    const chats = await getUserChats(userId);
-
-    return chats;
-}
