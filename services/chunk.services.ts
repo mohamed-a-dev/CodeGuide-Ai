@@ -38,23 +38,22 @@ export const searchSimilarChunks = async (messageEmbedding: number[], categoryId
     const vector = `[${messageEmbedding.join(",")}]`;
 
     const categoryFilter = categoryId
-        ? Prisma.sql`AND d."categoryId" = ${categoryId}`
+        ? Prisma.sql`WHERE "Document"."categoryId" = ${categoryId}`
         : Prisma.empty;
 
     const chunks = await prisma.$queryRaw<SimilarChunk[]>(Prisma.sql`
     SELECT 
-      dc.id,
-      dc.content,
-      dc."pageNumber",
-      dc."documentId",
-      d.filename,
-      1 - (dc.embedding <=> ${vector}::vector) AS similarity
-    FROM "DocumentChunk" dc
-    INNER JOIN "Document" d
-      ON dc."documentId" = d.id
-    WHERE dc.embedding IS NOT NULL
-      ${categoryFilter}
-    ORDER BY dc.embedding <=> ${vector}::vector
+      "DocumentChunk".id,
+      "DocumentChunk".content,
+      "DocumentChunk"."pageNumber",
+      "DocumentChunk"."documentId",
+      "Document".filename,
+      1 - ("DocumentChunk".embedding <=> ${vector}::vector) AS similarity
+    FROM "DocumentChunk"
+    INNER JOIN "Document" 
+      ON "DocumentChunk"."documentId" = "Document".id
+    ${categoryFilter}
+    ORDER BY similarity DESC
     LIMIT 5
   `);
 

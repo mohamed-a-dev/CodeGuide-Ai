@@ -210,7 +210,7 @@ export default function ChatUi({ cateId = null, initialMessages = [], oldChatId 
                         leading-6
                         ${isUser
                       ? "rounded-tr-md bg-slate-900 text-white"
-                      : "rounded-tl-md bg-slate-50 text-slate-700"
+                      : "rounded-tl-md bg-slate-50 text-slate-700 capitalize"
                     }
                       `}
                 >
