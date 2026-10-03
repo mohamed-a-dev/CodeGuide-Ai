@@ -104,7 +104,7 @@ export const generateChatResponseAction = async (message: ChatMessage, categoryI
 
 
             // send to llm
-            geminiResponse = await generateChatResponse(messagesToLLM);
+            geminiResponse = await generateChatResponse(messagesToLLM.slice(-10));
         }
 
         // store gemini message response into DB
