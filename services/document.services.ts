@@ -43,6 +43,18 @@ export const markDocumentAsIndexed  = async (documentId: string) => {
     });
 }
 
+export const markDocumentAsFailed  = async (documentId: string) => {
+    await prisma.document.update({
+        where: {
+            id: documentId
+        },
+
+        data: {
+            status: 'failed'
+        }
+    });
+}
+
 
 export const getDocumentsCount = async () => {
     return prisma.document.count();
