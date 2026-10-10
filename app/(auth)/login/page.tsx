@@ -36,8 +36,8 @@ export default function Login() {
             })
 
             if (!response.error) {
-                router.push('/dashboard');
                 displaySuccess("Welcome back! 🎉")
+                router.push('/dashboard');
             }
 
             if (response.code === "credentials")
